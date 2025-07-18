@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musawakhe Chipeya</title>
+    <!-- Tailwind CSS CDN for utility-first styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animate on Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Google Fonts - Inter for a clean and modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS file (style.css) - for additional custom styles including animations -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-link.active {
+            background-color: #eef2ff;
+            color: #4f46e5;
+            font-weight: 600;
+        }
+        .shadow-md {
+            transition: all 0.3s ease;
+        }
+        .shadow-md:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .scale-hover {
+            transition: transform 0.3s ease;
+        }
+        .scale-hover:hover {
+            transform: scale(1.05);
+        }
+        /* Styles for the custom message box */
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #4CAF50; /* Green background for success */
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            font-size: 1rem;
+            text-align: center;
+            opacity: 0; /* Start with opacity 0 for fade in */
+            transition: opacity 0.5s ease-in-out;
+        }
+        .message-box.show {
+            display: block;
+            opacity: 1;
+        }
+        .message-box.error {
+            background-color: #f44336; /* Red background for error */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased scroll-smooth bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full z-50 py-4">
+        <nav class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold text-indigo-600 rounded-lg p-2 hover:bg-indigo-50 transition duration-300">My Portfolio</a>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="#hero" class="nav-link p-2 rounded-lg">Home</a></li>
+                <li><a href="#about" class="nav-link p-2 rounded-lg">About</a></li>
+                <li><a href="#skills" class="nav-link p-2 rounded-lg">Skills</a></li>
+                <li><a href="#portfolio" class="nav-link p-2 rounded-lg">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link p-2 rounded-lg">Contact</a></li>
+            </ul>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md mt-2 rounded-lg mx-4">
+            <ul class="flex flex-col items-center py-2 space-y-2">
+                <li><a href="#hero" class="nav-link block py-2 px-4">Home</a></li>
+                <li><a href="#about" class="nav-link block py-2 px-4">About</a></li>
+                <li><a href="#skills" class="nav-link block py-2 px-4">Skills</a></li>
+                <li><a href="#portfolio" class="nav-link block py-2 px-4">Portfolio</a></li>
+                <li><a href="#contact" class="nav-link block py-2 px-4">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 to-purple-600 text-white pt-24">
+            <div class="text-center px-4" data-aos="zoom-in">
+                <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg mb-6">
+                    <img src="https://placehold.co/160x160/6366f1/ffffff?text=MC" class="w-full h-full object-cover" alt="Profile" />
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Hi, I'm <span class="text-yellow-300">Musawakhe Chipeya</span></h1>
+                <p class="text-xl md:text-2xl mb-6">Software Developer | Systems Analyst | Web Developer | AI Enthusiast</p>
+                <a href="#portfolio" class="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-100 scale-hover">View My Work</a>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-center text-indigo-700 mb-12">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2" data-aos="fade-right">
+                        <img src="resources/Confident-Professional-Portrait.png" class="rounded-xl shadow-lg" />
+                    </div>
+                    
+                    <div class="md:w-1/2 text-gray-700 leading-relaxed" data-aos="fade-left">
+                        <!-- Location and University Details with Icons -->
+                        <div class="mb-6 p-4 bg-indigo-50 rounded-lg shadow-sm">
+                            <p class="text-indigo-800 font-semibold mb-2">Details:</p>
+                            <ul class="list-none p-0 m-0 text-gray-700">
+                                <li class="mb-1 flex items-center"><i class="fas fa-map-marker-alt text-indigo-600 mr-2"></i> Johannesburg, Gauteng, South Africa</li>
+                                <li class="mb-1 flex items-center"><i class="fas fa-graduation-cap text-indigo-600 mr-2"></i> North-West University</li>
+                            </ul>
+                        </div>
+                        <p class="mb-4">I am an open-minded liberal who aspires to be a better version of myself each day, pushing boundaries and living my best life.</p>
+                        <p class="mb-4">I am a final-year Information Technology student with a passion for solving problems through code and innovative digital solutions. I enjoy building user-friendly applications and systems, and I’m also drawn to overseeing and managing projects that bring ideas to life.
+
+                            <p>I'm open to opportunities in Software Development, System Analysis, Web Development, Project Coordination, or IT Auditing, where I can apply my analytical mindset to ensure compliance, efficiency, and continuous improvement. I’m eager to keep learning, growing, and contributing meaningfully in the tech industry.</p>
+                                <a href="resources/MUSAWAKHE-CHIPEYA-CV-2025-SD.pdf" download
+                    class="inline-block mt-6 bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-indigo-700 transition duration-300">
+                    📄 Download CV
+                </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills (unchanged) -->
+        <section id="skills" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center text-indigo-700 mb-12">My Skills</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-100 p-8 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out text-center">
+                        <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Front-End Development</h3>
+                        <p class="text-gray-700">HTML5, CSS3, JavaScript, React.js, Tailwind CSS, Bootstrap</p>
+                    </div>
+                    <div class="bg-gray-100 p-8 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out text-center">
+                        <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Back-End Development</h3>
+                        <p class="text-gray-700"> Java, Python, C#, Java, .NET Framework, SQL, Node.js, RESTful APIs</p>
+                    </div>
+                    <div class="bg-gray-100 p-8 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out text-center">
+                        <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Databases</h3>
+                        <p class="text-gray-700"> MySQL, Oracle, MS Access, Microsoft SQL Server</p>
+                    </div>
+                    <div class="bg-gray-100 p-8 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out text-center">
+                        <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Tools</h3>
+                        <p class="text-gray-700">Git, GitHub, MS Office, Excel QM, VS Code, PyCharm, MS Visual Studio, Phoenix Code, Responsive Design</p>
+                    </div>
+                    <div class="bg-gray-100 p-8 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out text-center">
+                        <h3 class="text-2xl font-semibold text-indigo-600 mb-4">Analytical and Design Skills</h3>
+                        <p class="text-gray-700">UI/UX Design, Data Structures and Algorithms, Data Analytics, Decision Support Systems, Canva, Wireframing, Prototyping, User Research, Usability Testing</p>
+                    </div>
+                    <div class="bg-gray-100 p-8 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-2 transition duration-300 ease-in-out text-center">
+                        <h3 class="2xl font-semibold text-indigo-600 mb-4">Other</h3>
+                        <p class="text-gray-700"> APIs, Cisco Packet Tracer, Discrete Mathematics, Descriptive Statistics, Cloud Computing, Object Oriented Programming, Structured Programming</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio - all 6 projects -->
+        <section id="portfolio" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-center text-indigo-700 mb-12">My Portfolio</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden scale-hover" data-aos="fade-up">
+                        <img src="https://placehold.co/600x400/a78bfa/ffffff?text=Project+1" alt="Project 1" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-indigo-600 mb-2"> SPCA System Automation</h3>
+                            <p class="text-gray-700 mb-4">A full-stack website in a project team of 6. Analyzed and redesigned the
+                                appointment and volunteer system for the Vanderbijlpark SPCA, replacing Facebook
+                                based operations</p>
+                            <a href="#" class="text-indigo-500 hover:text-indigo-700 font-medium">View Project →</a>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden scale-hover" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://placehold.co/600x400/818cf8/ffffff?text=Project+2" alt="Project 2" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-indigo-600 mb-2"> Healthcare Chatbot in Python</h3>
+                            <p class="text-700 mb-4">Created a basic AI-driven chatbot that interacts with users and provides health
+                                relatedresponses using rule-based logic.</p>
+                            <a href="#" class="text-indigo-500 hover:text-indigo-700 font-medium">View Project →</a>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden scale-hover" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://placehold.co/600x400/c7d2fe/ffffff?text=Project+3" alt="Project 3" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-indigo-600 mb-2">Freelancer Job Management System</h3>
+                            <p class="text-gray-700 mb-4">Designed and implemented a full Oracle SQL database system with ERDs, normalization,
+                                constraints, and queries for managing freelancer contracts and jobs. </p>
+                            <a href="#" class="text-indigo-500 hover:text-indigo-700 font-medium">View Project →</a>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden scale-hover" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://placehold.co/600x400/a5b4fc/ffffff?text=Project+4" alt="Project 4" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-indigo-600 mb-2"> Event Management System</h3>
+                            <p class="text-gray-700 mb-4">Developed a C# Windows application with SQL Server database for event organization
+                                Implemented user registration, event hosting and personalized dashboard functionality </p>
+                            <a href="#" class="text-indigo-500 hover:text-indigo-700 font-medium">View Project →</a>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden scale-hover" data-aos="fade-up" data-aos-delay="400">
+                        <img src="https://placehold.co/600x400/818cf8/ffffff?text=Project+5" alt="Project 5" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-indigo-600 mb-2">Recipe Finder App</h3>
+                            <p class="text-gray-700 mb-4">A web application that allows users to search for recipes based on ingredients, dietary restrictions, and cuisine type.</p>
+                            <a href="#" class="text-indigo-500 hover:text-indigo-700 font-medium">View Project →</a>
+                        </div>
+                    </div>
+                    <!-- Card 6 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden scale-hover" data-aos="fade-up" data-aos-delay="500">
+                        <img src="https://placehold.co/600x400/c7d2fe/ffffff?text=Project+6" alt="Project 6" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-indigo-600 mb-2">Portfolio Website</h3>
+                            <p class="text-gray-700 mb-4">My Personal Portfolio website, showcasing new projects and improved design principles.</p>
+                            <a href="#" class="text-indigo-500 hover:text-indigo-700 font-medium">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="container mx-auto px-4" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-center text-indigo-700 mb-12">Get In Touch</h2>
+                <!-- Separate block for Email and Phone Number with Icons -->
+                <div class="max-w-xl mx-auto bg-indigo-50 p-8 rounded-xl shadow-sm mb-12">
+                    <p class="text-indigo-800 font-semibold mb-4 text-center">My Contact Details:</p>
+                    <ul class="list-none p-0 m-0 text-gray-700 space-y-2">
+                        <li class="flex items-center justify-center"><i class="fas fa-envelope text-indigo-600 mr-2"></i> waynemusawakhe@outlook.com</li>
+                        <li class="flex items-center justify-center"><i class="fas fa-phone-alt text-indigo-600 mr-2"></i> +27 73 740 8084</li>
+                    </ul>
+                </div>
+                <div class="max-w-xl mx-auto bg-gray-50 p-8 rounded-xl shadow-md">
+                    <!-- Formspree integration -->
+                    <form id="contactForm" action="https://formspree.io/f/xgvzvdol" method="POST" class="space-y-6">
+                        <input type="text" id="name" name="name" placeholder="Your Name" class="w-full border px-4 py-2 rounded-md shadow-sm" required />
+                        <input type="email" id="email" name="email" placeholder="Your Email" class="w-full border px-4 py-2 rounded-md shadow-sm" required />
+                        <textarea id="message" name="message" placeholder="Message" rows="5" class="w-full border px-4 py-2 rounded-md shadow-sm" required></textarea>
+                        <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-md hover:bg-indigo-700 scale-hover">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Custom Message Box for form submission feedback -->
+    <div id="messageBox" class="message-box"></div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 Musawakhe Chipeya. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-6">
+                <a href="https://za.linkedin.com/in/musawakhe-chipeya-911781308" class="hover:text-indigo-400">LinkedIn</a>
+                <a href="https://github.com/Waynemusawakhe" class="hover:text-indigo-400">GitHub</a>
+                
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+
+    <!-- Mobile Nav Toggle + Active Scroll -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+        const header = document.querySelector('header');
+        let headerHeight = header.offsetHeight;
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        window.addEventListener('scroll', setActiveLink);
+        window.addEventListener('load', setActiveLink);
+        window.addEventListener('resize', () => {
+            headerHeight = header.offsetHeight;
+            setActiveLink();
+        });
+        function setActiveLink() {
+            let current = '';
+            const scrollY = window.pageYOffset;
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - headerHeight - 1;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.href.includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // --- Contact Form Submission Logic for clearing fields after successful send ---
+        const contactForm = document.getElementById('contactForm');
+        const messageBox = document.getElementById('messageBox'); // Get the message box element
+
+        contactForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission (page reload)
+
+            const formData = new FormData(contactForm); // Get form data
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: contactForm.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json' // Important for Formspree's AJAX response
+                    }
+                });
+
+                if (response.ok) { // Check if the response was successful (status 2xx)
+                    contactForm.reset(); // Clear the form fields
+                    showMessage('Message sent successfully!', 'success');
+                } else {
+                    // Handle server-side errors or Formspree specific errors
+                    const data = await response.json();
+                    if (data.errors) {
+                        showMessage('Error: ' + data.errors.map(err => err.message).join(', '), 'error');
+                    } else {
+                        showMessage('An error occurred. Please try again.', 'error');
+                    }
+                }
+            } catch (error) {
+                // Handle network errors
+                console.error('Network error:', error);
+                showMessage('Network error. Please check your connection.', 'error');
+            }
+        });
+
+        // Function to display messages
+        function showMessage(message, type) {
+            messageBox.textContent = message;
+            messageBox.className = 'message-box show'; // Reset classes and show
+            if (type === 'error') {
+                messageBox.classList.add('error');
+            } else {
+                messageBox.classList.remove('error'); // Ensure no error styling for success
+            }
+
+            // Hide the message after 3 seconds
+            setTimeout(() => {
+                messageBox.classList.remove('show');
+                // Optional: remove error class after fade out if you want to reuse the box
+                setTimeout(() => {
+                    messageBox.classList.remove('error');
+                }, 500); // Wait for fadeOut transition to complete
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
