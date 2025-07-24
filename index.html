@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musawakhe Chipeya</title>
-    <!-- Tailwind CSS CDN for utility-first styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- AOS Animate on Scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <!-- Google Fonts - Inter for a clean and modern look -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Custom CSS file (style.css) - for additional custom styles including animations -->
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -42,16 +37,16 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #4CAF50; /* Green background for success */
+            background-color: #4CAF50; 
             color: white;
             padding: 15px 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 1000;
-            display: none; /* Hidden by default */
+            display: none; 
             font-size: 1rem;
             text-align: center;
-            opacity: 0; /* Start with opacity 0 for fade in */
+            opacity: 0; 
             transition: opacity 0.5s ease-in-out;
         }
         .message-box.show {
@@ -59,7 +54,7 @@
             opacity: 1;
         }
         .message-box.error {
-            background-color: #f44336; /* Red background for error */
+            background-color: #f44336;
         }
 
         @keyframes fadeIn {
@@ -126,7 +121,7 @@
                 <h2 class="text-4xl font-bold text-center text-indigo-700 mb-12">About Me</h2>
                 <div class="flex flex-col md:flex-row items-center gap-12">
                     <div class="md:w-1/2" data-aos="fade-right">
-                        <img src="resources/Confident-Professional-Portrait.png" class="rounded-xl shadow-lg" />
+                        <img src="resources/headshot.png" class="rounded-xl shadow-lg" />
                     </div>
                     
                     <div class="md:w-1/2 text-gray-700 leading-relaxed" data-aos="fade-left">
@@ -151,7 +146,7 @@
             </div>
         </section>
 
-        <!-- Skills (unchanged) -->
+        <!-- Skills -->
         <section id="skills" class="py-20 bg-white">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-bold text-center text-indigo-700 mb-12">My Skills</h2>
@@ -184,7 +179,7 @@
             </div>
         </section>
 
-        <!-- Portfolio - all 6 projects -->
+        <!-- Portfolio -->
         <section id="portfolio" class="py-20 bg-gray-50">
             <div class="container mx-auto px-4" data-aos="fade-up">
                 <h2 class="text-4xl font-bold text-center text-indigo-700 mb-12">My Portfolio</h2>
@@ -339,12 +334,12 @@
             });
         }
 
-        // --- Contact Form Submission Logic for clearing fields after successful send ---
+
         const contactForm = document.getElementById('contactForm');
-        const messageBox = document.getElementById('messageBox'); // Get the message box element
+        const messageBox = document.getElementById('messageBox'); 
 
         contactForm.addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent the default form submission (page reload)
+            event.preventDefault(); 
 
             const formData = new FormData(contactForm); // Get form data
 
